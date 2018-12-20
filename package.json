@@ -1,0 +1,19 @@
+{
+  "name": "adjective-animal-generator",
+  "version": "1.0.0",
+  "description": "A basic web page that generates adjective/animal combinations",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.28.0",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "gfycat-style-urls": "^1.0.3"
+  }
+}
