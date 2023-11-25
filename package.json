@@ -5,15 +5,15 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack --mode=production"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "webpack": "^4.28.0",
-    "webpack-cli": "^3.1.2"
-  },
   "dependencies": {
     "gfycat-style-urls": "^1.0.3"
+  },
+  "devDependencies": {
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }
