@@ -17,18 +17,19 @@
       }
       @media (prefers-color-scheme: light) {
         :root {
-          --color-bg: #eaedf4;
+          --color-bg: #c0c1bd;
           --color-fg: #000000;
         }
       }
       body {
-        box-sizing: border-box;
-        font-family: "Mukta", sans-serif;
         background: var(--color-bg);
+        box-sizing: border-box;
+        color: var(--color-fg);
+        font-family: "Mukta", sans-serif;
         font-size: 24px;
         font-weight: 300;
-        color: var(--color-fg);
         padding: 1rem 2rem;
+        transition: all 0.5s;
       }
       @media screen and (min-width: 80rem) {
         body {
@@ -115,6 +116,12 @@
         padding: 0 0.5rem;
         opacity: 50%;
       }
+      .footer {
+        color: color-mix(in srgb, var(--color-fg) 80%, var(--color-bg));
+        font-size: 80%;
+        margin-top: 2rem;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -152,6 +159,10 @@
       <button id="regenerate">✨ Regenerate!</button>
     </form>
     <ul id="list"></ul>
+    <p class="footer">
+      That's the end of the list, but you can always
+      <a id="regenerate-link" href="#">generate more</a>.
+    </p>
     <script src="./main.js"></script>
     <script
       data-goatcounter="https://adjectiveadjectiveanimal.goatcounter.com/count"

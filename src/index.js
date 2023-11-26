@@ -51,9 +51,16 @@ inputs.forEach((element) => {
     window.repopulateList();
   });
 });
-document.getElementById("regenerate").addEventListener("click", (event) => {
-  event.preventDefault();
-  window.repopulateList();
+
+const regenerateButtons = [
+  document.getElementById("regenerate"),
+  document.getElementById("regenerate-link"),
+];
+regenerateButtons.forEach((element) => {
+  element.addEventListener("click", (event) => {
+    event.preventDefault();
+    window.repopulateList();
+  });
 });
 
 // Update the favicon for fun
