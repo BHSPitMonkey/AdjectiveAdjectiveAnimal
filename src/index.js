@@ -15,7 +15,7 @@ function clickHandler(event) {
   );
 }
 
-function populateList() {
+window.repopulateList = () => {
   const list = document.getElementById("list");
   const size = 36;
   list.innerHTML = "";
@@ -27,7 +27,13 @@ function populateList() {
     list.appendChild(li);
   }
 }
+window.repopulateList();
 
-populateList();
-
-window.populateList = populateList;
+// Update the favicon for fun
+const animals = '🐵🐒🦍🦧🐶🐕🦮🐕‍🦺🐩🐺🦊🦝🐱🐈🐈‍⬛🦁🐯🐅🐆🐴🫎🫏🐎🦄🦓🦌🦬🐮🐂🐃🐄🐷🐖🐗🐽🐏🐑🐐🐪🐫🦙🦒🐘🦣🦏🦛🐭🐁🐀🐹🐰🐇🐿️🦫🦔🦇🐻🐻‍❄️🐨🐼🦥🦦🦨🦘🦡🦃🐔🐓🐣🐤🐥🐦🐧🕊️🦅🦆🦢🦉🦤🪶🦩🦚🦜🪽🐦‍⬛🪿🪹🪺🐸🐊🐢🦎🐍🐲🐉🦕🦖🐳🐋🐬🦭🐟🐠🐡🦈🐙🐚🪸🪼🦀🦞🦐🦑🦪🐌🦋🐛🐜🐝🪲🐞🦗🪳🕷️🕸️🦂🦟🪰🪱🦠';
+const animalsArray = [...animals];
+const animal = animalsArray[Math.floor(Math.random() * animalsArray.length)];
+const link = document.createElement('link');
+link.rel = 'icon';
+link.href = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">${animal}</text></svg>`;
+document.head.appendChild(link);
