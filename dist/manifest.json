@@ -1,0 +1,17 @@
+{
+  "name": "Adjective Animal Generator",
+  "description": "Generate random \"Adjective + Animal\" phrase combinations",
+  "short_name": "Adjective Animal",
+  "start_url": "https://bhspitmonkey.github.io/AdjectiveAdjectiveAnimal/",
+  "scope": "https://bhspitmonkey.github.io/AdjectiveAdjectiveAnimal/",
+  "lang": "en-US",
+  "theme_color": "#1c1e1e",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "images/icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

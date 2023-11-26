@@ -91,3 +91,20 @@ regenerateButtons.forEach((element) => {
     window.repopulateList();
   });
 });
+
+// Update theme meta
+function updateTheme() {
+  const bgColor = getComputedStyle(document.body).getPropertyValue(
+    "--color-bg"
+  );
+  document
+    .querySelector('meta[name="theme-color"]')
+    .setAttribute("content", bgColor);
+}
+updateTheme();
+window
+  .matchMedia("(prefers-color-scheme: dark)")
+  .addEventListener("change", (e) => e.matches && updateTheme());
+window
+  .matchMedia("(prefers-color-scheme: light)")
+  .addEventListener("change", (e) => e.matches && updateTheme());
