@@ -26,6 +26,7 @@ window.repopulateList = () => {
   let adjectiveCount = form.elements["count"].value;
   if (adjectiveCount < 1) adjectiveCount = 1;
   if (adjectiveCount > 3) adjectiveCount = 3;
+  form.elements["count"].value = adjectiveCount;
   const capitalize = !!form.elements["capitalize"].checked;
 
   for (let i = 0; i < size; i++) {
