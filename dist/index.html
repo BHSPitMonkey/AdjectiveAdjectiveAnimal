@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;500;700&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -62,11 +62,41 @@
         padding: 0.5rem 1rem;
         font-size: 80%;
       }
+      .options {
+        display: flex;
+        gap: 2rem;
+      }
+      .options label {
+        font-size: 80%;
+        font-weight: 500;
+      }
+      .options input,
+      .options button,
+      .options select {
+        background-color: color-mix(in srgb, var(--color-fg) 5%, transparent);
+        color: var(--color-fg);
+        font-size: 20px;
+        border: 1px solid var(--color-fg);
+        border-radius: var(--radius);
+        padding: 0.35rem 0.5rem;
+      }
+      .options input:hover,
+      .options button:hover,
+      .options select:hover {
+        background-color: color-mix(in srgb, var(--color-fg) 10%, transparent);
+      }
+      .options input[type="number"] {
+        max-width: 3em;
+      }
+      .options input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+      }
       #list {
         list-style: none;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-        grid-gap: 1rem;
+        gap: 1rem;
         padding: 0;
       }
       #list li {
@@ -101,6 +131,25 @@
       <strong>Disclaimer:</strong> Not guaranteed to be cryptographially secure.
       Do not use this tool as a password generator!
     </p>
+    <form class="options" id="options">
+      <div>
+        <label>Separator</label>
+        <select name="delimiter">
+          <option value="none" selected>None</option>
+          <option value="space">Space</option>
+          <option value="hyphen">Hyphen</option>
+        </select>
+      </div>
+      <div>
+        <label>Capitalize</label>
+        <input name="capitalize" type="checkbox" checked />
+      </div>
+      <div>
+        <label>Adjectives</label>
+        <input name="count" type="number" min="1" max="3" value="2" />
+      </div>
+      <button id="regenerate">✨ Regenerate!</button>
+    </form>
     <ul id="list"></ul>
     <script src="./main.js"></script>
     <script

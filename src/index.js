@@ -15,25 +15,50 @@ function clickHandler(event) {
   );
 }
 
+const delimiterTypes = { none: "", space: " ", hyphen: "-" };
 window.repopulateList = () => {
   const list = document.getElementById("list");
   const size = 36;
   list.innerHTML = "";
 
+  const form = document.getElementById("options");
+  const delimiter = delimiterTypes[form.elements["delimiter"].value];
+  const adjectiveCount = form.elements["count"].value;
+  const capitalize = !!form.elements["capitalize"].checked;
+
   for (let i = 0; i < size; i++) {
     let li = document.createElement("li");
-    li.innerText = generateCombination(2, "", true);
+    li.innerText = generateCombination(adjectiveCount, delimiter, true);
+    if (!capitalize) {
+      li.innerText = li.innerText.toLowerCase();
+    }
     li.addEventListener("click", clickHandler);
     list.appendChild(li);
   }
-}
+};
 window.repopulateList();
 
+// Options form
+const inputs = [
+  ...document.getElementsByTagName("input"),
+  ...document.getElementsByTagName("select"),
+];
+inputs.forEach((element) => {
+  element.addEventListener("change", () => {
+    window.repopulateList();
+  });
+});
+document.getElementById("regenerate").addEventListener("click", (event) => {
+  event.preventDefault();
+  window.repopulateList();
+});
+
 // Update the favicon for fun
-const animals = '🐵🐒🦍🦧🐶🐕🦮🐕‍🦺🐩🐺🦊🦝🐱🐈🐈‍⬛🦁🐯🐅🐆🐴🫎🫏🐎🦄🦓🦌🦬🐮🐂🐃🐄🐷🐖🐗🐽🐏🐑🐐🐪🐫🦙🦒🐘🦣🦏🦛🐭🐁🐀🐹🐰🐇🐿️🦫🦔🦇🐻🐻‍❄️🐨🐼🦥🦦🦨🦘🦡🦃🐔🐓🐣🐤🐥🐦🐧🕊️🦅🦆🦢🦉🦤🪶🦩🦚🦜🪽🐦‍⬛🪿🪹🪺🐸🐊🐢🦎🐍🐲🐉🦕🦖🐳🐋🐬🦭🐟🐠🐡🦈🐙🐚🪸🪼🦀🦞🦐🦑🦪🐌🦋🐛🐜🐝🪲🐞🦗🪳🕷️🕸️🦂🦟🪰🪱🦠';
+const animals =
+  "🐵🐒🦍🦧🐶🐕🦮🐕‍🦺🐩🐺🦊🦝🐱🐈🐈‍⬛🦁🐯🐅🐆🐴🫎🫏🐎🦄🦓🦌🦬🐮🐂🐃🐄🐷🐖🐗🐽🐏🐑🐐🐪🐫🦙🦒🐘🦣🦏🦛🐭🐁🐀🐹🐰🐇🐿️🦫🦔🦇🐻🐻‍❄️🐨🐼🦥🦦🦨🦘🦡🦃🐔🐓🐣🐤🐥🐦🐧🕊️🦅🦆🦢🦉🦤🪶🦩🦚🦜🪽🐦‍⬛🪿🪹🪺🐸🐊🐢🦎🐍🐲🐉🦕🦖🐳🐋🐬🦭🐟🐠🐡🦈🐙🐚🪸🪼🦀🦞🦐🦑🦪🐌🦋🐛🐜🐝🪲🐞🦗🪳🕷️🕸️🦂🦟🪰🪱🦠";
 const animalsArray = [...animals];
 const animal = animalsArray[Math.floor(Math.random() * animalsArray.length)];
-const link = document.createElement('link');
-link.rel = 'icon';
+const link = document.createElement("link");
+link.rel = "icon";
 link.href = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">${animal}</text></svg>`;
 document.head.appendChild(link);
