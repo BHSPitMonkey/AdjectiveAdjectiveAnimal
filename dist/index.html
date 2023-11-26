@@ -33,7 +33,7 @@
       }
       @media screen and (min-width: 80rem) {
         body {
-          padding: 3rem 6rem;
+          padding: 2rem 6rem;
         }
       }
       a {
@@ -55,6 +55,9 @@
         color: color-mix(in srgb, var(--color-fg) 80%, var(--color-bg));
         line-height: 95%;
         margin: 0;
+      }
+      header h1 sup {
+        margin-left: 1rem;
       }
       .notecard {
         background: color-mix(in srgb, var(--color-fg) 10%, transparent);
@@ -126,7 +129,7 @@
   </head>
   <body>
     <header>
-      <h1>Adjective Animal Generator</h1>
+      <h1>Adjective Animal Generator<sup id="emoji-holder">🐱</sup></h1>
       <p class="tagline">
         Randomly-generated short phrases consisting of adjectives and animal
         names.

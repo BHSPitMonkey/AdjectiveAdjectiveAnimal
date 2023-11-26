@@ -1,5 +1,6 @@
 import { generateCombination } from "gfycat-style-urls";
 
+// Handler for when a name is clicked
 function clickHandler(event) {
   navigator.clipboard.writeText(event.target.innerText).then(
     () => {
@@ -15,6 +16,31 @@ function clickHandler(event) {
   );
 }
 
+// Update the favicon for fun
+function updateEmoji(tries = 10) {
+  const animals =
+    "🐵🐒🦍🦧🐶🐕🦮🐕‍🦺🐩🐺🦊🦝🐱🐈🐈‍⬛🦁🐯🐅🐆🐴🫎🫏🐎🦄🦓🦌🦬🐮🐂🐃🐄🐷🐖🐗🐽🐏🐑🐐🐪🐫🦙🦒🐘🦣🦏🦛🐭🐁🐀🐹🐰🐇🐿️🦫🦔🦇🐻🐻‍❄️🐨🐼🦥🦦🦨🦘🦡🦃🐔🐓🐣🐤🐥🐦🐧🕊️🦅🦆🦢🦉🦤🪶🦩🦚🦜🪽🐦‍⬛🪿🪹🪺🐸🐊🐢🦎🐍🐲🐉🦕🦖🐳🐋🐬🦭🐟🐠🐡🦈🐙🐚🪸🪼🦀🦞🦐🦑🦪🐌🦋🐛🐜🐝🪲🐞🦗🪳🕷️🕸️🦂🦟🪰🪱🦠";
+  const animalsArray = [...animals];
+  const animal = animalsArray[Math.floor(Math.random() * animalsArray.length)];
+  const link = document.createElement("link");
+  link.rel = "icon";
+  link.href = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">${animal}</text></svg>`;
+  document.head.appendChild(link);
+
+  const emojiHolder = document.getElementById("emoji-holder");
+  emojiHolder.innerText = animal;
+  if (emojiHolder.getBoundingClientRect().width == 0) {
+    if (tries > 0) {
+      // Try again
+      console.log("Chosen emoji seemingly unsupported; Trying another", animal);
+      updateEmoji(tries - 1);
+    } else {
+      console.warning("Unable to render emoji as expected :(", animal);
+    }
+  }
+}
+
+// (Re)generate names and update list
 const delimiterTypes = { none: "", space: " ", hyphen: "-" };
 window.repopulateList = () => {
   const list = document.getElementById("list");
@@ -38,6 +64,8 @@ window.repopulateList = () => {
     li.addEventListener("click", clickHandler);
     list.appendChild(li);
   }
+
+  updateEmoji();
 };
 window.repopulateList();
 
@@ -52,6 +80,7 @@ inputs.forEach((element) => {
   });
 });
 
+// Regenerate links/buttons
 const regenerateButtons = [
   document.getElementById("regenerate"),
   document.getElementById("regenerate-link"),
@@ -62,13 +91,3 @@ regenerateButtons.forEach((element) => {
     window.repopulateList();
   });
 });
-
-// Update the favicon for fun
-const animals =
-  "🐵🐒🦍🦧🐶🐕🦮🐕‍🦺🐩🐺🦊🦝🐱🐈🐈‍⬛🦁🐯🐅🐆🐴🫎🫏🐎🦄🦓🦌🦬🐮🐂🐃🐄🐷🐖🐗🐽🐏🐑🐐🐪🐫🦙🦒🐘🦣🦏🦛🐭🐁🐀🐹🐰🐇🐿️🦫🦔🦇🐻🐻‍❄️🐨🐼🦥🦦🦨🦘🦡🦃🐔🐓🐣🐤🐥🐦🐧🕊️🦅🦆🦢🦉🦤🪶🦩🦚🦜🪽🐦‍⬛🪿🪹🪺🐸🐊🐢🦎🐍🐲🐉🦕🦖🐳🐋🐬🦭🐟🐠🐡🦈🐙🐚🪸🪼🦀🦞🦐🦑🦪🐌🦋🐛🐜🐝🪲🐞🦗🪳🕷️🕸️🦂🦟🪰🪱🦠";
-const animalsArray = [...animals];
-const animal = animalsArray[Math.floor(Math.random() * animalsArray.length)];
-const link = document.createElement("link");
-link.rel = "icon";
-link.href = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">${animal}</text></svg>`;
-document.head.appendChild(link);
