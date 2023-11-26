@@ -1,49 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Adjective Animal Generator</title>
-    <link href="https://fonts.googleapis.com/css?family=Dosis:700|Overlock:900" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --color-bg: #1c1e1e;
+        --color-fg: #ffffff;
+        --radius: 5px;
+      }
+      @media (prefers-color-scheme: light) {
+        :root {
+          --color-bg: #eaedf4;
+          --color-fg: #000000;
+        }
+      }
       body {
         box-sizing: border-box;
-        font-family: 'Dosis', sans-serif;
-        background: powderblue;
-        font-size: 28px;
-        font-weight: 400;
-        color: rgba(51, 9, 9, 0.59)
+        font-family: "Mukta", sans-serif;
+        background: var(--color-bg);
+        font-size: 24px;
+        font-weight: 300;
+        color: var(--color-fg);
+        padding: 1rem 2rem;
       }
-      h1 {
-        font-family: 'Overlock', cursive;
-        font-size: 80px;
-        color: #8e7498;
+      @media screen and (min-width: 80rem) {
+        body {
+          padding: 3rem 6rem;
+        }
       }
-      .container {
-        width: 1000px;
-        margin: 200px auto;
+      a {
+        color: var(--color-fg);
+        opacity: 80%;
+        text-decoration-style: dotted;
+        text-decoration-thickness: 7%;
+        transition: all 0.2s ease-out;
       }
-      .col {
-        width: 50%;
-        float: left;
+      a:hover {
+        opacity: 100%;
       }
-      ul {
+      strong {
+        font-weight: 700;
+      }
+      header h1 {
+        font-family: "Mukta", sans-serif;
+        font-size: 70px;
+        color: color-mix(in srgb, var(--color-fg) 80%, var(--color-bg));
+        line-height: 95%;
+        margin: 0;
+      }
+      .notecard {
+        background: color-mix(in srgb, var(--color-fg) 10%, transparent);
+        border: 1px solid var(--color-fg);
+        border-radius: var(--radius);
+        padding: 0.5rem 1rem;
+        font-size: 80%;
+      }
+      #list {
         list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        grid-gap: 1rem;
+        padding: 0;
       }
-      li {
-        margin-bottom: 10px;
+      #list li {
+        border-radius: var(--radius);
+        padding: 0 1rem;
+        transition: background-color 0.2s ease-out;
+      }
+      #list li:hover {
+        background-color: color-mix(in srgb, var(--color-fg) 5%, transparent);
       }
     </style>
   </head>
   <body>
-    <div class="container">
+    <header>
       <h1>Adjective Animal Generator</h1>
-      <div class="col">
-        <ul id="list1"></ul>
-      </div>
-      <div class="col">
-        <ul id="list2"></ul>
-      </div>
-      <div style="clear:both"></div>
-    </div>
+      <p class="tagline">Randomly-generated short phrases consisting of adjectives and animal names. <a href="https://github.com/BHSPitMonkey/AdjectiveAdjectiveAnimal">Source code on GitHub</a></subtitle>
+    </header>
+    <p class="notecard">
+      <strong>Disclaimer:</strong> Not guaranteed to be cryptographially secure.
+      Do not use this tool as a password generator!
+    </p>
+    <ul id="list"></ul>
     <script src="./main.js"></script>
   </body>
 </html>
