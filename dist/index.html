@@ -76,6 +76,13 @@
       #list li:hover {
         background-color: color-mix(in srgb, var(--color-fg) 5%, transparent);
       }
+      #list li.copied::after {
+        content: 'Copied!';
+        margin-left: 1rem;
+        font-size: 80%;
+        padding: 0 0.5rem;
+        opacity: 50%;
+      }
     </style>
   </head>
   <body>
