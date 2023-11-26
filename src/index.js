@@ -4,9 +4,9 @@ function clickHandler(event) {
   navigator.clipboard.writeText(event.target.innerText).then(
     () => {
       console.log("Copied to clipboard");
-      event.target.classList.add('copied');
+      event.target.classList.add("copied");
       setTimeout(() => {
-        event.target.classList.remove('copied');
+        event.target.classList.remove("copied");
       }, 5000);
     },
     () => {
@@ -18,12 +18,12 @@ function clickHandler(event) {
 function populateList() {
   const list = document.getElementById("list");
   const size = 36;
-  list.innerHTML = '';
+  list.innerHTML = "";
 
   for (let i = 0; i < size; i++) {
     let li = document.createElement("li");
     li.innerText = generateCombination(2, "", true);
-    li.addEventListener('click', clickHandler);
+    li.addEventListener("click", clickHandler);
     list.appendChild(li);
   }
 }
